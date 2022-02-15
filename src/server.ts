@@ -2,6 +2,7 @@ import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken'
 import decode from 'jwt-decode'
+import morgan from 'morgan'
 import { generateJwtAndRefreshToken } from './auth';
 import { auth } from './config';
 
@@ -12,6 +13,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors())
+app.use(morgan('dev'))
 
 seedUserStore();
 
